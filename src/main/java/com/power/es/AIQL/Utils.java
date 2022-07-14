@@ -1,7 +1,7 @@
 package com.power.es.AIQL;
 
-import com.power.es.gen.ESInitLexer;
-import com.power.es.gen.ESInitParser;
+import com.power.es.gen.EsInitLexer;
+import com.power.es.gen.EsInitParser;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.CodePointCharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -17,15 +17,13 @@ public class Utils {
 
     /**
      *
-     * @param   code
-     * @return
+     * @return string
      */
     public static String getEsQuery(String code) {
-
         CodePointCharStream charStream = CharStreams.fromString(code);
-        ESInitLexer lexer = new ESInitLexer(charStream);
+        EsInitLexer lexer = new EsInitLexer(charStream);
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        ESInitParser parser = new ESInitParser(tokenStream);
+        EsInitParser parser = new EsInitParser(tokenStream);
         ParseTree tree = parser.parse();
         EsInitListenerImpl listener = new EsInitListenerImpl();
         ParseTreeWalker walker = new ParseTreeWalker();

@@ -1,11 +1,13 @@
-grammar ESInit;
+grammar EsInit;
 
 parse : expression EOF;
 
 expression
-    :   expression AND expression
-    |   expression OR expression
-    |   expr
+    :   '!' expression  #notExpression
+    |   '('expression')'    #parenExpression
+    |   expression AND expression   #andExpression
+    |   expression OR expression    #orExpression
+    |   expr    #commonExpression
     ;
 
 expr
@@ -15,16 +17,15 @@ expr
     |   param GE value  #GeExpr
     |   param NE value  #NeExpr
     |   param EQ value  #EqExpr
-    |   param LIKE value  #LikeExpr
+    |   param CONTAIN value  #ContainExpr
+    |   param NOTCONTAIN value  #NotContainExpr
     |   param IN array  #InExpr
     |   param NOT_IN array  #NotInExpr
-    |   param EXIST  #Exist
-    |   param NOT_EXIST  #NotExist
+    |   param EXIST #ExistExpr
+    |   param NOT_EXIST #NotExistExpr
+    |   param REG regex #RegexExpr
+    |   param DOT rank NUMBER   #RankExpr
     ;
-    /*
-    |   param op=(LT|GT|LE|GE) value
-    |   param op=LIKE value
-    ;*/
 
 array
     :'['']'
@@ -36,13 +37,24 @@ param
     ;
 
 value
-    :   STRING  #String
-    |   NUMBER  #Number
-    |   TIME    #Time
-    |   'true'  #True
-    |   'false' #False
-    |   'null'  #Null
+    :   STRING
+    |   NUMBER
+    |   TIME
+    |   'true'
+    |   'false'
+    |   'null'
     ;
+
+regex
+    :REGEX
+    ;
+
+rank
+    :   TOP
+    |   BOT
+    ;
+
+REGEX   :   '/' (ESC | ~["\\] )* '/';
 
 AND :   'AND';
 OR  :   'OR';
@@ -52,11 +64,18 @@ LT  :   '<';
 GT  :   '>';
 LE  :   '<=';
 GE  :   '>=';
+REG :   '=~';
 LIKE:   'LIKE';
 IN  :   'IN';
 NOT_IN  :   'NOT_IN';
 EXIST   :   'EXIST';
 NOT_EXIST   :   'NOT_EXIST';
+NOT :   'NOT';
+DOT :   '.';
+CONTAIN :   'CONTAIN';
+NOTCONTAIN  :   'NOTCONTAIN';
+TOP :   'top';
+BOT :   'bot';
 
 
 IDENTIFIER : [a-zA-Z_] [a-zA-Z_0-9]* | [0-9]+ [a-zA-Z_] [a-zA-Z_0-9]*;

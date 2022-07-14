@@ -1,8 +1,8 @@
 package com.power.es.gen.impl;
 
 import com.power.es.base.OpEnum;
-import com.power.es.gen.ESInitListener;
-import com.power.es.gen.ESInitParser;
+import com.power.es.gen.EsInitListener;
+import com.power.es.gen.EsInitParser;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -16,76 +16,72 @@ import java.util.Stack;
 /**
  * @author Aurora
  */
-public class EsInitListenerImpl implements ESInitListener {
+public class EsInitListenerImpl implements EsInitListener {
 
     private Stack<Object> stack = new Stack<>();
 
     @Override
-    public void enterString(ESInitParser.StringContext ctx) {
+    public void enterRegexExpr(EsInitParser.RegexExprContext ctx) {
+        List<ParseTree> children = ctx.children;
+        String param = children.get(0).getText();
+        String regex = children.get(2).getText();
+        BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder()
+                .must(QueryBuilders.regexpQuery(param, regex));
+        stack.push(boolQueryBuilder);
+    }
+
+    @Override
+    public void exitRegexExpr(EsInitParser.RegexExprContext ctx) {
 
     }
 
     @Override
-    public void exitString(ESInitParser.StringContext ctx) {
-    }
-
-    @Override
-    public void enterNumber(ESInitParser.NumberContext ctx) {
+    public void enterValue(EsInitParser.ValueContext ctx) {
 
     }
 
     @Override
-    public void exitNumber(ESInitParser.NumberContext ctx) {
+    public void exitValue(EsInitParser.ValueContext ctx) {
 
     }
 
     @Override
-    public void enterTime(ESInitParser.TimeContext ctx) {
+    public void enterRegex(EsInitParser.RegexContext ctx) {
 
     }
 
     @Override
-    public void exitTime(ESInitParser.TimeContext ctx) {
+    public void exitRegex(EsInitParser.RegexContext ctx) {
 
     }
 
     @Override
-    public void enterTrue(ESInitParser.TrueContext ctx) {
+    public void enterExistExpr(EsInitParser.ExistExprContext ctx) {
 
     }
 
     @Override
-    public void exitTrue(ESInitParser.TrueContext ctx) {
+    public void enterRankExpr(EsInitParser.RankExprContext ctx) {
 
     }
 
     @Override
-    public void enterFalse(ESInitParser.FalseContext ctx) {
+    public void exitRankExpr(EsInitParser.RankExprContext ctx) {
 
     }
 
     @Override
-    public void exitFalse(ESInitParser.FalseContext ctx) {
+    public void enterRank(EsInitParser.RankContext ctx) {
 
     }
 
     @Override
-    public void enterNull(ESInitParser.NullContext ctx) {
+    public void exitRank(EsInitParser.RankContext ctx) {
 
     }
 
     @Override
-    public void exitNull(ESInitParser.NullContext ctx) {
-
-    }
-
-    @Override
-    public void enterExist(ESInitParser.ExistContext ctx) {
-
-    }
-
-    @Override
-    public void exitExist(ESInitParser.ExistContext ctx) {
+    public void exitExistExpr(EsInitParser.ExistExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         param = param.substring(1,param.length() - 1);
@@ -95,12 +91,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterNotExist(ESInitParser.NotExistContext ctx) {
+    public void enterNotExistExpr(EsInitParser.NotExistExprContext ctx) {
 
     }
 
     @Override
-    public void exitNotExist(ESInitParser.NotExistContext ctx) {
+    public void exitNotExistExpr(EsInitParser.NotExistExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         param = param.substring(1,param.length() - 1);
@@ -110,12 +106,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterLtExpr(ESInitParser.LtExprContext ctx) {
+    public void enterLtExpr(EsInitParser.LtExprContext ctx) {
 
     }
 
     @Override
-    public void exitLtExpr(ESInitParser.LtExprContext ctx) {
+    public void exitLtExpr(EsInitParser.LtExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String value = children.get(2).getText();
@@ -124,12 +120,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterGtExpr(ESInitParser.GtExprContext ctx) {
+    public void enterGtExpr(EsInitParser.GtExprContext ctx) {
 
     }
 
     @Override
-    public void exitGtExpr(ESInitParser.GtExprContext ctx) {
+    public void exitGtExpr(EsInitParser.GtExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String value = children.get(2).getText();
@@ -138,12 +134,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterLeExpr(ESInitParser.LeExprContext ctx) {
+    public void enterLeExpr(EsInitParser.LeExprContext ctx) {
 
     }
 
     @Override
-    public void exitLeExpr(ESInitParser.LeExprContext ctx) {
+    public void exitLeExpr(EsInitParser.LeExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String value = children.get(2).getText();
@@ -152,12 +148,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterGeExpr(ESInitParser.GeExprContext ctx) {
+    public void enterGeExpr(EsInitParser.GeExprContext ctx) {
 
     }
 
     @Override
-    public void exitGeExpr(ESInitParser.GeExprContext ctx) {
+    public void exitGeExpr(EsInitParser.GeExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String value = children.get(2).getText();
@@ -166,12 +162,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterNeExpr(ESInitParser.NeExprContext ctx) {
+    public void enterNeExpr(EsInitParser.NeExprContext ctx) {
 
     }
 
     @Override
-    public void exitNeExpr(ESInitParser.NeExprContext ctx) {
+    public void exitNeExpr(EsInitParser.NeExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String value = children.get(2).getText();
@@ -180,12 +176,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterEqExpr(ESInitParser.EqExprContext ctx) {
+    public void enterEqExpr(EsInitParser.EqExprContext ctx) {
 
     }
 
     @Override
-    public void exitEqExpr(ESInitParser.EqExprContext ctx) {
+    public void exitEqExpr(EsInitParser.EqExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String value = children.get(2).getText();
@@ -197,12 +193,27 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterLikeExpr(ESInitParser.LikeExprContext ctx) {
+    public void enterNotContainExpr(EsInitParser.NotContainExprContext ctx) {
 
     }
 
     @Override
-    public void exitLikeExpr(ESInitParser.LikeExprContext ctx) {
+    public void exitNotContainExpr(EsInitParser.NotContainExprContext ctx) {
+        List<ParseTree> children = ctx.children;
+        String param = children.get(0).getText();
+        String value = children.get(2).getText().substring(1,children.get(2).getText().length() - 1);
+        BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder()
+                .mustNot(QueryBuilders.wildcardQuery(param, "*" + value + "*"));
+        stack.push(boolQueryBuilder);
+    }
+
+    @Override
+    public void enterContainExpr(EsInitParser.ContainExprContext ctx) {
+
+    }
+
+    @Override
+    public void exitContainExpr(EsInitParser.ContainExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String value = children.get(2).getText().substring(1,children.get(2).getText().length() - 1);
@@ -212,12 +223,12 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterInExpr(ESInitParser.InExprContext ctx) {
+    public void enterInExpr(EsInitParser.InExprContext ctx) {
 
     }
 
     @Override
-    public void exitInExpr(ESInitParser.InExprContext ctx) {
+    public void exitInExpr(EsInitParser.InExprContext ctx) {
         List<ParseTree> children = ctx.children;
         String param = children.get(0).getText();
         String array = children.get(2).getText();
@@ -246,42 +257,42 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterNotInExpr(ESInitParser.NotInExprContext ctx) {
+    public void enterNotInExpr(EsInitParser.NotInExprContext ctx) {
 
     }
 
     @Override
-    public void exitNotInExpr(ESInitParser.NotInExprContext ctx) {
+    public void exitNotInExpr(EsInitParser.NotInExprContext ctx) {
 
     }
 
     @Override
-    public void enterArray(ESInitParser.ArrayContext ctx) {
+    public void enterArray(EsInitParser.ArrayContext ctx) {
 
     }
 
     @Override
-    public void exitArray(ESInitParser.ArrayContext ctx) {
+    public void exitArray(EsInitParser.ArrayContext ctx) {
 
     }
 
     @Override
-    public void enterParse(ESInitParser.ParseContext ctx) {
+    public void enterParse(EsInitParser.ParseContext ctx) {
 
     }
 
     @Override
-    public void exitParse(ESInitParser.ParseContext ctx) {
+    public void exitParse(EsInitParser.ParseContext ctx) {
 
     }
 
     @Override
-    public void enterParam(ESInitParser.ParamContext ctx) {
+    public void enterParam(EsInitParser.ParamContext ctx) {
 
     }
 
     @Override
-    public void exitParam(ESInitParser.ParamContext ctx) {
+    public void exitParam(EsInitParser.ParamContext ctx) {
     }
 
     @Override
@@ -305,26 +316,64 @@ public class EsInitListenerImpl implements ESInitListener {
     }
 
     @Override
-    public void enterExpression(ESInitParser.ExpressionContext ctx) {
+    public void enterOrExpression(EsInitParser.OrExpressionContext ctx) {
 
     }
 
     @Override
-    public void exitExpression(ESInitParser.ExpressionContext ctx) {
+    public void exitOrExpression(EsInitParser.OrExpressionContext ctx) {
         List<ParseTree> children = ctx.children;
-        if (children.size() < 2) {
-            return;
-        }
         String logic = children.get(1).getText();
         Object top1 = stack.peek();
         Object top2 = stack.elementAt(stack.size() - 2);
-        if (Objects.equals(logic, OpEnum.OR.getValue())) {
-            MergeOr((BoolQueryBuilder) top1, (BoolQueryBuilder) top2);
-            return;
-        }
-        if (top1 instanceof BoolQueryBuilder && top2 instanceof BoolQueryBuilder) {
-            MergeAnd((BoolQueryBuilder) top1, (BoolQueryBuilder) top2);
-        }
+        MergeOr((BoolQueryBuilder) top1, (BoolQueryBuilder) top2);
+    }
+
+    @Override
+    public void enterAndExpression(EsInitParser.AndExpressionContext ctx) {
+
+    }
+
+    @Override
+    public void exitAndExpression(EsInitParser.AndExpressionContext ctx) {
+        List<ParseTree> children = ctx.children;
+        String logic = children.get(1).getText();
+        Object top1 = stack.peek();
+        Object top2 = stack.elementAt(stack.size() - 2);
+        MergeAnd((BoolQueryBuilder) top1, (BoolQueryBuilder) top2);
+    }
+
+    @Override
+    public void enterNotExpression(EsInitParser.NotExpressionContext ctx) {
+
+    }
+
+    @Override
+    public void exitNotExpression(EsInitParser.NotExpressionContext ctx) {
+        Object pop = stack.pop();
+        BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
+        boolQueryBuilder.mustNot((BoolQueryBuilder)pop);
+        stack.push(boolQueryBuilder);
+    }
+
+    @Override
+    public void enterParenExpression(EsInitParser.ParenExpressionContext ctx) {
+
+    }
+
+    @Override
+    public void exitParenExpression(EsInitParser.ParenExpressionContext ctx) {
+
+    }
+
+    @Override
+    public void enterCommonExpression(EsInitParser.CommonExpressionContext ctx) {
+
+    }
+
+    @Override
+    public void exitCommonExpression(EsInitParser.CommonExpressionContext ctx) {
+
     }
 
     public Stack<Object> getStack() {
@@ -334,15 +383,36 @@ public class EsInitListenerImpl implements ESInitListener {
     public void MergeOr(BoolQueryBuilder top1, BoolQueryBuilder top2) {
         if (Objects.equals(top1.getClass().getName(), BoolQueryBuilder.class.getName())) {
             BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
-            if (top1.must().size() > 1) {
-                boolQueryBuilder.should(top1);
-            } else {
-                boolQueryBuilder.should(top1.must().get(0));
+            if (!top1.must().isEmpty()) {
+                if (top1.must().size() > 1) {
+                    boolQueryBuilder.should(top1);
+                } else {
+                    boolQueryBuilder.should(top1.must().get(0));
+                }
             }
-            if (top2.must().size() > 1) {
-                boolQueryBuilder.should(top2);
-            } else {
-                boolQueryBuilder.should(top2.must().get(0));
+            if (!top2.must().isEmpty()) {
+                if (top2.must().size() > 1) {
+                    boolQueryBuilder.should(top2);
+                } else {
+                    boolQueryBuilder.should(top2.must().get(0));
+                }
+            }
+            //合并should
+            if (!top1.should().isEmpty()) {
+                for (QueryBuilder queryBuilder : top1.should()) {
+                    boolQueryBuilder.should(queryBuilder);
+                }
+            }
+            if (!top2.should().isEmpty()) {
+                for (QueryBuilder queryBuilder : top2.should()) {
+                    boolQueryBuilder.should(queryBuilder);
+                }
+            }
+            if (!top1.mustNot().isEmpty()) {
+                boolQueryBuilder.should((new BoolQueryBuilder()).mustNot(top1.mustNot().get(0)));
+            }
+            if (!top2.mustNot().isEmpty()) {
+                boolQueryBuilder.should((new BoolQueryBuilder()).mustNot(top2.mustNot().get(0)));
             }
             stack.pop();
             stack.pop();
@@ -353,17 +423,34 @@ public class EsInitListenerImpl implements ESInitListener {
 
     public void MergeAnd(BoolQueryBuilder top1, BoolQueryBuilder top2) {
         BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
+        //合并条件中的must
         for (QueryBuilder queryBuilder : top1.must()) {
             boolQueryBuilder.must(queryBuilder);
         }
         for (QueryBuilder queryBuilder : top2.must()) {
             boolQueryBuilder.must(queryBuilder);
         }
+        //合并条件中的must_not
         for (QueryBuilder queryBuilder : top1.mustNot()) {
             boolQueryBuilder.mustNot(queryBuilder);
         }
         for (QueryBuilder queryBuilder : top2.mustNot()) {
             boolQueryBuilder.mustNot(queryBuilder);
+        }
+        //合并条件中的should，需另外组合bool should
+        if (!top1.should().isEmpty()){
+            BoolQueryBuilder boolQueryBuilder1 = new BoolQueryBuilder();
+            for (QueryBuilder queryBuilder : top1.should()) {
+                boolQueryBuilder1.should(queryBuilder);
+            }
+            boolQueryBuilder.must(boolQueryBuilder1.minimumShouldMatch(1));
+        }
+        if (!top2.should().isEmpty()) {
+            BoolQueryBuilder boolQueryBuilder2 = new BoolQueryBuilder();
+            for (QueryBuilder queryBuilder : top2.should()) {
+                boolQueryBuilder2.should(queryBuilder);
+            }
+            boolQueryBuilder.must(boolQueryBuilder2.minimumShouldMatch(1));
         }
         stack.pop();
         stack.pop();
