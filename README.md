@@ -10,8 +10,12 @@ ElasticSearch query statement translator based on antlr4<br>
     "<"   ：小于
     "<="  ：小于等于
     ">="  ：大于等于
+    "=~"  : 正则
+    "!~"  : 正则取反
     "IN"  ：包含在
     "NOT_IN"  ：不包含在
+    "CONTAINS"
+    "NOTCONTAINS"
   值: 数字（INT类型）、字符串、数组、时间<br>
 常规查询：a == 123 AND b == 456 AND name == "张三"<br>
 ```JSON
@@ -106,5 +110,6 @@ a>=2022-07-11 16:00:00.000 AND b<=2022-07-11 17:00:00.000 （待优化）
 
     "EXIST"   ：存在
     "NOT_EXIST" ：不存在
-以及逻辑连接词AND OR<br>
+   
+以及逻辑连接词AND(与)、OR(或) !(非)<br>
 
