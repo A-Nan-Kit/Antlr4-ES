@@ -3,11 +3,12 @@ grammar EsInit;
 parse : expression EOF;
 
 expression
-    :   '!' expression  #notExpression
+    :   '!' expression      #notExpression
     |   '('expression')'    #parenExpression
+    |   aggexpr             #aggreExpression
     |   expression AND expression   #andExpression
     |   expression OR expression    #orExpression
-    |   expr    #commonExpression
+    |   expr                #commonExpression
     ;
 
 expr
@@ -24,7 +25,6 @@ expr
     |   param EXIST #ExistExpr
     |   param NOT_EXIST #NotExistExpr
     |   param REG regex #RegexExpr
-    |   param DOT rank NUMBER   #RankExpr
     ;
 
 array
@@ -32,28 +32,52 @@ array
     |'[' value (','value)* ']'
     ;
 
+aggexpr
+    :   param DOT MAX parenValve #MaxAggExpr
+    |   param DOT MIN parenValve #MinAggExpr
+    |   param DOT AVG parenValve #AvgAggExpr
+    |   param DOT GROUP parenValve  #GroupAggExpr
+    ;
+
+parenValve
+    :   '('')'
+    |   '(' aggexpr ')'
+    |   '(' expression ')'
+    ;
+
 param
     :   IDENTIFIER
     ;
 
 value
-    :   STRING
-    |   NUMBER
-    |   TIME
-    |   'true'
-    |   'false'
-    |   'null'
+    :   IPv4    #IpV4Value
+    |   IPv6    #IpV6Valve
+    |   STRING  #StringValue
+    |   NUMBER  #NumberValue
+    |   TIME    #TimeValue
+    |   'true'  #TrueValue
+    |   'false' #FalseValue
+    |   'null'  #NullValue
     ;
 
 regex
     :REGEX
     ;
 
-rank
-    :   TOP
-    |   BOT
+IPv4
+    :   '"'SEGMENT DOT SEGMENT DOT SEGMENT DOT SEGMENT '"'
+    |   '"'SEGMENT DOT SEGMENT DOT SEGMENT DOT SEGMENT '/' NUMBER '"'
     ;
 
+
+IPv6
+    :   '"' SEGMENTv6 (':' SEGMENTv6)+ '"'
+    |   '"' (SEGMENTv6 ':' )+ ':' SEGMENTv6 (':' SEGMENTv6)*'"'
+    ;
+
+STRING
+    :   '"' (ESC | ~["\\] )*  '"'
+    ;
 REGEX   :   '/' (ESC | ~["\\] )* '/';
 
 AND :   'AND';
@@ -74,13 +98,19 @@ NOT :   'NOT';
 DOT :   '.';
 CONTAIN :   'CONTAIN';
 NOTCONTAIN  :   'NOTCONTAIN';
-TOP :   'top';
-BOT :   'bot';
 
+MAX :   'max';
+MIN :   'min';
+SUM :   'sum';
+AVG :   'agv';
+GROUP   :   'group';
 
 IDENTIFIER : [a-zA-Z_] [a-zA-Z_0-9]* | [0-9]+ [a-zA-Z_] [a-zA-Z_0-9]*;
-STRING :  '"' (ESC | ~["\\] )*  '"';
-TIME : [0-9][0-9][0-9][0-9]'-'[0-9][0-9]'-'[0-9][0-9]' '[0-9][0-9]':'[0-9][0-9]':'[0-9][0-9]'.'[0-9][0-9][0-9];
+
+TIME
+    :   [0-9][0-9][0-9][0-9]'-'[0-9][0-9]'-'[0-9][0-9]' '[0-9][0-9]':'[0-9][0-9]':'[0-9][0-9]'.'[0-9][0-9][0-9]
+    |   [0-9][0-9][0-9][0-9]'-'[0-9][0-9]'-'[0-9][0-9]' '[0-9][0-9]':'[0-9][0-9]':'[0-9][0-9]
+    ;
 fragment ESC :   '\\' (["\\/bfnrt] | UNICODE) ;
 fragment UNICODE : 'u' HEX HEX HEX HEX ;
 fragment HEX : [0-9a-fA-F] ;
@@ -91,6 +121,17 @@ NUMBER
     |   '-'? INT EXP            // 1e10 -3e4
     |   '-'? INT                // -3, 45
     ;
+
+SEGMENTv6
+    :   (([0-9] | [a-f] | [A-F])+) ([0-9] | [a-f] | [A-F])*
+    |   '*'
+    ;
+
+SEGMENT
+    :   ([0-9] | [1-9][0-9] | '1'[0-9][0-9] | '2'[0-4]'5' | [1-2]'5'[0-4] )
+    |   '*'
+    ;
+
 
 fragment INT :   '0' | '1'..'9' '0'..'9'* ; // no leading zeros
 fragment EXP :   [Ee] [+\-]? INT ; // \- since - means "range" inside [...]

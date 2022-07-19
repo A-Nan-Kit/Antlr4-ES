@@ -1,5 +1,5 @@
 // Generated from D:/File/File/JAVA/AIQL-ES/src/main/java/com/power/es/g4\EsInit.g4 by ANTLR 4.10.1
-package com.power.es.gen;
+package com.power.es.gen.boolquery;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -47,6 +47,18 @@ public class EsInitBaseListener implements EsInitListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAndExpression(EsInitParser.AndExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAggreExpression(EsInitParser.AggreExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAggreExpression(EsInitParser.AggreExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -244,18 +256,6 @@ public class EsInitBaseListener implements EsInitListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRankExpr(EsInitParser.RankExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRankExpr(EsInitParser.RankExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterArray(EsInitParser.ArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -263,6 +263,66 @@ public class EsInitBaseListener implements EsInitListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArray(EsInitParser.ArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMaxAggExpr(EsInitParser.MaxAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMaxAggExpr(EsInitParser.MaxAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMinAggExpr(EsInitParser.MinAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMinAggExpr(EsInitParser.MinAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAvgAggExpr(EsInitParser.AvgAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAvgAggExpr(EsInitParser.AvgAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGroupAggExpr(EsInitParser.GroupAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGroupAggExpr(EsInitParser.GroupAggExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParenValve(EsInitParser.ParenValveContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParenValve(EsInitParser.ParenValveContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -280,13 +340,97 @@ public class EsInitBaseListener implements EsInitListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterValue(EsInitParser.ValueContext ctx) { }
+	@Override public void enterIpV4Value(EsInitParser.IpV4ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitValue(EsInitParser.ValueContext ctx) { }
+	@Override public void exitIpV4Value(EsInitParser.IpV4ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIpV6Valve(EsInitParser.IpV6ValveContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIpV6Valve(EsInitParser.IpV6ValveContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStringValue(EsInitParser.StringValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStringValue(EsInitParser.StringValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNumberValue(EsInitParser.NumberValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumberValue(EsInitParser.NumberValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTimeValue(EsInitParser.TimeValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTimeValue(EsInitParser.TimeValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTrueValue(EsInitParser.TrueValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTrueValue(EsInitParser.TrueValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFalseValue(EsInitParser.FalseValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFalseValue(EsInitParser.FalseValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNullValue(EsInitParser.NullValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNullValue(EsInitParser.NullValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -299,18 +443,6 @@ public class EsInitBaseListener implements EsInitListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitRegex(EsInitParser.RegexContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRank(EsInitParser.RankContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRank(EsInitParser.RankContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -1,4 +1,4 @@
-package com.power.es.base;
+package com.power.es.base.common;
 
 import lombok.Getter;
 
@@ -8,12 +8,12 @@ import java.util.Objects;
  * @author A_Nan
  */
 public enum OpEnum {
-    LT("lt","<"),
-    GT("gt",">"),
-    LE("le","<="),
-    GE("ge",">="),
-    AND("and","AND"),
-    OR("or","OR"),
+    LT("lt", "<"),
+    GT("gt", ">"),
+    LE("le", "<="),
+    GE("ge", ">="),
+    AND("and", "AND"),
+    OR("or", "OR"),
     ;
 
     @Getter
@@ -37,7 +37,7 @@ public enum OpEnum {
 
     public static OpEnum getByValue(String value) {
         for (OpEnum e : values()) {
-            if (Objects.equals(value,e.value)) {
+            if (Objects.equals(value, e.value)) {
                 return e;
             }
         }

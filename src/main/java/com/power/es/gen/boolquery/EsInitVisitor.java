@@ -1,5 +1,5 @@
 // Generated from D:/File/File/JAVA/AIQL-ES/src/main/java/com/power/es/g4\EsInit.g4 by ANTLR 4.10.1
-package com.power.es.gen;
+package com.power.es.gen.boolquery;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -30,6 +30,13 @@ public interface EsInitVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAndExpression(EsInitParser.AndExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code aggreExpression}
+	 * labeled alternative in {@link EsInitParser}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAggreExpression(EsInitParser.AggreExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code notExpression}
 	 * labeled alternative in {@link EsInitParser}.
@@ -143,18 +150,45 @@ public interface EsInitVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRegexExpr(EsInitParser.RegexExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code RankExpr}
-	 * labeled alternative in {@link EsInitParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRankExpr(EsInitParser.RankExprContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link EsInitParser#array}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitArray(EsInitParser.ArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code MaxAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMaxAggExpr(EsInitParser.MaxAggExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code MinAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMinAggExpr(EsInitParser.MinAggExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code AvgAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAvgAggExpr(EsInitParser.AvgAggExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code GroupAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGroupAggExpr(EsInitParser.GroupAggExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link EsInitParser#parenValve}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParenValve(EsInitParser.ParenValveContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EsInitParser#param}.
 	 * @param ctx the parse tree
@@ -162,21 +196,65 @@ public interface EsInitVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParam(EsInitParser.ParamContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EsInitParser#value}.
+	 * Visit a parse tree produced by the {@code IpV4Value}
+	 * labeled alternative in {@link EsInitParser#value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitValue(EsInitParser.ValueContext ctx);
+	T visitIpV4Value(EsInitParser.IpV4ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code IpV6Valve}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIpV6Valve(EsInitParser.IpV6ValveContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code StringValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStringValue(EsInitParser.StringValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NumberValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumberValue(EsInitParser.NumberValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code TimeValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTimeValue(EsInitParser.TimeValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code TrueValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTrueValue(EsInitParser.TrueValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code FalseValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFalseValue(EsInitParser.FalseValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NullValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNullValue(EsInitParser.NullValueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EsInitParser#regex}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitRegex(EsInitParser.RegexContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EsInitParser#rank}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRank(EsInitParser.RankContext ctx);
 }

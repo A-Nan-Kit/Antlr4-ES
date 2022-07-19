@@ -1,5 +1,5 @@
 // Generated from D:/File/File/JAVA/AIQL-ES/src/main/java/com/power/es/g4\EsInit.g4 by ANTLR 4.10.1
-package com.power.es.gen;
+package com.power.es.gen.boolquery;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -41,6 +41,18 @@ public interface EsInitListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAndExpression(EsInitParser.AndExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code aggreExpression}
+	 * labeled alternative in {@link EsInitParser}.
+	 * @param ctx the parse tree
+	 */
+	void enterAggreExpression(EsInitParser.AggreExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code aggreExpression}
+	 * labeled alternative in {@link EsInitParser}.
+	 * @param ctx the parse tree
+	 */
+	void exitAggreExpression(EsInitParser.AggreExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code notExpression}
 	 * labeled alternative in {@link EsInitParser}.
@@ -234,18 +246,6 @@ public interface EsInitListener extends ParseTreeListener {
 	 */
 	void exitRegexExpr(EsInitParser.RegexExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code RankExpr}
-	 * labeled alternative in {@link EsInitParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterRankExpr(EsInitParser.RankExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code RankExpr}
-	 * labeled alternative in {@link EsInitParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitRankExpr(EsInitParser.RankExprContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link EsInitParser#array}.
 	 * @param ctx the parse tree
 	 */
@@ -255,6 +255,64 @@ public interface EsInitListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitArray(EsInitParser.ArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code MaxAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMaxAggExpr(EsInitParser.MaxAggExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code MaxAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMaxAggExpr(EsInitParser.MaxAggExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code MinAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMinAggExpr(EsInitParser.MinAggExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code MinAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMinAggExpr(EsInitParser.MinAggExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code AvgAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAvgAggExpr(EsInitParser.AvgAggExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code AvgAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAvgAggExpr(EsInitParser.AvgAggExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GroupAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterGroupAggExpr(EsInitParser.GroupAggExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GroupAggExpr}
+	 * labeled alternative in {@link EsInitParser#aggexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitGroupAggExpr(EsInitParser.GroupAggExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link EsInitParser#parenValve}.
+	 * @param ctx the parse tree
+	 */
+	void enterParenValve(EsInitParser.ParenValveContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EsInitParser#parenValve}.
+	 * @param ctx the parse tree
+	 */
+	void exitParenValve(EsInitParser.ParenValveContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EsInitParser#param}.
 	 * @param ctx the parse tree
@@ -266,15 +324,101 @@ public interface EsInitListener extends ParseTreeListener {
 	 */
 	void exitParam(EsInitParser.ParamContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EsInitParser#value}.
+	 * Enter a parse tree produced by the {@code IpV4Value}
+	 * labeled alternative in {@link EsInitParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterValue(EsInitParser.ValueContext ctx);
+	void enterIpV4Value(EsInitParser.IpV4ValueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EsInitParser#value}.
+	 * Exit a parse tree produced by the {@code IpV4Value}
+	 * labeled alternative in {@link EsInitParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitValue(EsInitParser.ValueContext ctx);
+	void exitIpV4Value(EsInitParser.IpV4ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IpV6Valve}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterIpV6Valve(EsInitParser.IpV6ValveContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IpV6Valve}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitIpV6Valve(EsInitParser.IpV6ValveContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StringValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringValue(EsInitParser.StringValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StringValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringValue(EsInitParser.StringValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NumberValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumberValue(EsInitParser.NumberValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NumberValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumberValue(EsInitParser.NumberValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code TimeValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterTimeValue(EsInitParser.TimeValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TimeValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitTimeValue(EsInitParser.TimeValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code TrueValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterTrueValue(EsInitParser.TrueValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TrueValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitTrueValue(EsInitParser.TrueValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FalseValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterFalseValue(EsInitParser.FalseValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FalseValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitFalseValue(EsInitParser.FalseValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NullValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterNullValue(EsInitParser.NullValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NullValue}
+	 * labeled alternative in {@link EsInitParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitNullValue(EsInitParser.NullValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EsInitParser#regex}.
 	 * @param ctx the parse tree
@@ -285,14 +429,4 @@ public interface EsInitListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRegex(EsInitParser.RegexContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EsInitParser#rank}.
-	 * @param ctx the parse tree
-	 */
-	void enterRank(EsInitParser.RankContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EsInitParser#rank}.
-	 * @param ctx the parse tree
-	 */
-	void exitRank(EsInitParser.RankContext ctx);
 }

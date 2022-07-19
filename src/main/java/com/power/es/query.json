@@ -1,0 +1,20 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "regexp": {
+            "a": {
+              "value": "/[a-z]/",
+              "flags_value": 255,
+              "max_determinized_states": 10000,
+              "boost": 1.0
+            }
+          }
+        }
+      ],
+      "adjust_pure_negative": true,
+      "boost": 1.0
+    }
+  }
+}
