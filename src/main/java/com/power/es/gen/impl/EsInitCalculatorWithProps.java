@@ -41,6 +41,19 @@ public class EsInitCalculatorWithProps implements EsInitListener {
     }
 
     @Override
+    public void enterEsAllExpression(EsInitParser.EsAllExpressionContext ctx) {
+
+    }
+
+    @Override
+    public void exitEsAllExpression(EsInitParser.EsAllExpressionContext ctx) {
+        String value = valueProperty.get(ctx.children.get(1)).getValue().toString();
+        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+        sourceBuilder.query(QueryBuilders.queryStringQuery(value));
+        treeProperty.put(ctx, sourceBuilder);
+    }
+
+    @Override
     public void enterOrExpression(EsInitParser.OrExpressionContext ctx) {
 
     }
@@ -122,7 +135,6 @@ public class EsInitCalculatorWithProps implements EsInitListener {
         String param = ctx.getChild(0).getText();
         ParseTree valueNode = ctx.getChild(2);
         ValueContext value = valueProperty.get(valueNode);
-        //int value = Integer.parseInt(ctx.getChild(2).getText());
         SearchSourceBuilder builder = new SearchSourceBuilder()
                 .query(new BoolQueryBuilder().must(new RangeQueryBuilder(param).lt(value.getValue())));
         treeProperty.put(ctx, builder);
@@ -368,10 +380,10 @@ public class EsInitCalculatorWithProps implements EsInitListener {
 
     @Override
     public void exitParenValve(EsInitParser.ParenValveContext ctx) {
-        if (ctx.getChildCount() <= 2) {
+        if (ctx.getChildCount() < 2) {
             treeProperty.put(ctx, null);
         }
-        treeProperty.put(ctx, treeProperty.get(ctx.getChild(1)));
+        valueProperty.put(ctx, valueProperty.get(ctx.getChild(1)));
     }
 
     @Override
@@ -393,12 +405,14 @@ public class EsInitCalculatorWithProps implements EsInitListener {
     public void exitIpV4Value(EsInitParser.IpV4ValueContext ctx) {
         String ip = ctx.getChild(0).getText();
         ip = ip.substring(1, ip.length() - 1);
-        int index = Integer.MAX_VALUE;
+        //目前不支持子网掩码形式，去除掩码部分
+        if (ip.contains("/")) {
+            ip = ip.substring(0, ip.indexOf("/"));
+        }
+        int index = ip.length();
+        //通配符位置获取
         if (ip.contains("*")) {
             index = Math.min(ip.indexOf("*"), index);
-        }
-        if (ip.contains("/")) {
-            index = Math.min(Integer.parseInt(ip.substring(ip.indexOf("/") + 1)), index);
         }
         ip = ip.substring(0, index);
         valueProperty.put(ctx, new ValueContext(ValueTypeEnum.IPV4, ip));
@@ -418,7 +432,7 @@ public class EsInitCalculatorWithProps implements EsInitListener {
             index = Math.min(index, ip.indexOf('*'));
             ip = ip.substring(0, index);
         }
-        valueProperty.put(ctx, new ValueContext(ValueTypeEnum.IPV4, ip));
+        valueProperty.put(ctx, new ValueContext(ValueTypeEnum.IPV6, ip));
     }
 
     @Override

@@ -64,6 +64,18 @@ public class EsInitBaseListener implements EsInitListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterEsAllExpression(EsInitParser.EsAllExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEsAllExpression(EsInitParser.EsAllExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNotExpression(EsInitParser.NotExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}

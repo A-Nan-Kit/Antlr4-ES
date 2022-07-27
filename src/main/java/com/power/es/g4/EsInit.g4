@@ -3,8 +3,9 @@ grammar EsInit;
 parse : expression EOF;
 
 expression
-    :   '!' expression      #notExpression
-    |   '('expression')'    #parenExpression
+    :   '('expression')'    #parenExpression
+    |   'es:all' parenValve #esAllExpression
+    |   NOT expression      #notExpression
     |   aggexpr             #aggreExpression
     |   expression AND expression   #andExpression
     |   expression OR expression    #orExpression
@@ -43,6 +44,7 @@ parenValve
     :   '('')'
     |   '(' aggexpr ')'
     |   '(' expression ')'
+    |   '(' value ')'
     ;
 
 param
@@ -97,7 +99,7 @@ NOT_EXIST   :   'NOT_EXIST';
 NOT :   'NOT';
 DOT :   '.';
 CONTAIN :   'CONTAIN';
-NOTCONTAIN  :   'NOTCONTAIN';
+NOTCONTAIN  :   'NOT_CONTAIN';
 
 MAX :   'max';
 MIN :   'min';

@@ -39,7 +39,7 @@
           <option name="outputDir" value="D:\File\File\JAVA\AIQL-ES\src\main\java" />
           <option name="libDir" value="" />
           <option name="encoding" value="" />
-          <option name="pkg" value="com.power.es.gen" />
+          <option name="pkg" value="com.power.es.gen.boolquery" />
           <option name="language" value="" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>

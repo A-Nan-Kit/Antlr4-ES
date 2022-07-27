@@ -19,73 +19,85 @@ public interface EsInitListener extends ParseTreeListener {
 	void exitParse(EsInitParser.ParseContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code orExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void enterOrExpression(EsInitParser.OrExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code orExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void exitOrExpression(EsInitParser.OrExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code andExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void enterAndExpression(EsInitParser.AndExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code andExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void exitAndExpression(EsInitParser.AndExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code aggreExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void enterAggreExpression(EsInitParser.AggreExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code aggreExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void exitAggreExpression(EsInitParser.AggreExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code esAllExpression}
+	 * labeled alternative in {@link EsInitParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEsAllExpression(EsInitParser.EsAllExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code esAllExpression}
+	 * labeled alternative in {@link EsInitParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEsAllExpression(EsInitParser.EsAllExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code notExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void enterNotExpression(EsInitParser.NotExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code notExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void exitNotExpression(EsInitParser.NotExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code parenExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void enterParenExpression(EsInitParser.ParenExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code parenExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void exitParenExpression(EsInitParser.ParenExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code commonExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void enterCommonExpression(EsInitParser.CommonExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code commonExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void exitCommonExpression(EsInitParser.CommonExpressionContext ctx);

@@ -18,42 +18,49 @@ public interface EsInitVisitor<T> extends ParseTreeVisitor<T> {
 	T visitParse(EsInitParser.ParseContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code orExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitOrExpression(EsInitParser.OrExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code andExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAndExpression(EsInitParser.AndExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code aggreExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAggreExpression(EsInitParser.AggreExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code esAllExpression}
+	 * labeled alternative in {@link EsInitParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEsAllExpression(EsInitParser.EsAllExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code notExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitNotExpression(EsInitParser.NotExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code parenExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitParenExpression(EsInitParser.ParenExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code commonExpression}
-	 * labeled alternative in {@link EsInitParser}.
+	 * labeled alternative in {@link EsInitParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */

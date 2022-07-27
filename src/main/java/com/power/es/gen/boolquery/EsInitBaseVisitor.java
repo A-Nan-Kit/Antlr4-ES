@@ -45,6 +45,13 @@ public class EsInitBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitEsAllExpression(EsInitParser.EsAllExpressionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitNotExpression(EsInitParser.NotExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
